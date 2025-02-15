@@ -228,5 +228,54 @@ def instructor_profile():
     user = User.query.get(session['user_id'])
     return render_template('instructor_profile.html', user=user)
 
+@app.route('/instructor/dashboard')
+def instructor_dashboard():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('instructor_dashboard.html', user=user)
+
+@app.route('/instructor/classes')
+def instructor_classes():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('instructor_classes.html', user=user)
+
+@app.route('/instructor/settings')
+def instructor_settings():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('instructor_settings.html', user=user)
+
+@app.route('/student/dashboard')
+def student_dashboard():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('student_dashboard.html', user=user)
+
+@app.route('/student/courses')
+def student_courses():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('student_courses.html', user=user)
+
+@app.route('/student/assignments')
+def student_assignments():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('student_assignments.html', user=user)
+
+@app.route('/student/grades')
+def student_grades():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('student_grades.html', user=user)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

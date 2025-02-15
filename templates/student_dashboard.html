@@ -14,22 +14,22 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="/index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <p class="m-0 fw-bold" style="font-size: 25px;"><img src="/static/img/icon.png" alt="" height="50px">Secret<span style="color: #fb873f;">Coder</span></p>
         </a>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <span class="nav-item nav-link">{{ user.school }}</span>
                 <span class="nav-item nav-link">Grade: {{ user.grade }}</span>
-                <a href="#courses" class="nav-item nav-link">My Courses</a>
-                <a href="#assignments" class="nav-item nav-link">Assignments</a>
+                <a href="/student/courses" class="nav-item nav-link">My Courses</a>
+                <a href="/student/assignments" class="nav-item nav-link">Assignments</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="fa fa-user"></i> {{ user.full_name }}
                     </a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="#profile" class="dropdown-item">Profile</a>
-                        <a href="#grades" class="dropdown-item">My Grades</a>
+                        <a href="/student/profile" class="dropdown-item">Profile</a>
+                        <a href="/student/grades" class="dropdown-item">My Grades</a>
                         <a href="/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
