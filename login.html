@@ -207,20 +207,39 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.querySelector('form').onsubmit = async function(e) {
+            e.preventDefault();
+            const submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Logging in...';
+
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value
+                    })
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Login failed');
+                }
+
+                window.location.href = `/dashboard/${data.userType}/${data.id}`;
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Login';
+            }
+        };
+    </script>
 </body>
 
 </html>
-
-<script src="js/auth.js"></script>
-<script>
-    document.querySelector('form').onsubmit = async function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        
-        const user = await login(email, password);
-        if (user) {
-            window.location.href = `/dashboard/${user.userType}/${user.id}`;
-        }
-    };
-</script>

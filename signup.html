@@ -223,16 +223,38 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/auth.js"></script>
     <script>
-        document.querySelector('form').onsubmit = function(e) {
+        document.querySelector('form').onsubmit = async function(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const userType = document.getElementById('userType').value;
-            
-            if (signup(email, password, userType)) {
+            const submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Creating Account...';
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                        userType: document.getElementById('userType').value
+                    })
+                });
+                
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Registration failed');
+                }
+                
+                const userType = document.getElementById('userType').value;
                 window.location.href = userType === 'student' ? 'student_profile.html' : 'instructor_profile.html';
+            } catch (error) {
+                alert(error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Signup';
             }
         };
     </script>

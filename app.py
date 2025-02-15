@@ -17,11 +17,20 @@ with app.app_context():
 @app.route('/api/register', methods=['POST'])
 def register():
     data = request.json
+    email = data.get('email', '').lower().strip()
+    password = data.get('password', '')
+    user_type = data.get('userType', '')
     
-    if User.query.filter_by(email=data['email']).first():
+    if not email or not password or not user_type:
+        return jsonify({'error': 'All fields are required'}), 400
+        
+    if len(password) < 6:
+        return jsonify({'error': 'Password must be at least 6 characters'}), 400
+        
+    if User.query.filter_by(email=email).first():
         return jsonify({'error': 'Email already exists'}), 409
         
-    hashed_password = generate_password_hash(data['password'])
+    hashed_password = generate_password_hash(password)
     new_user = User(
         email=data['email'],
         password=hashed_password,
