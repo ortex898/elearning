@@ -26,15 +26,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-   
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -51,7 +51,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <p class="m-0 fw-bold" style="font-size: 25px;"><img src="img/icon.png" alt="" height="50px">Secret<span
+            <p class="m-0 fw-bold" style="font-size: 25px;"><img src="{{ url_for('static', filename='img/icon.png') }}" alt="" height="50px">Secret<span
                     style="color: #fb873f;">Coder</span></p>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -89,7 +89,7 @@
     <div class="container-fluid p-0 mb-4">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                <img class="img-fluid" src="{{ url_for('static', filename='img/carousel-1.jpg') }}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <img class="img-fluid" src="{{ url_for('static', filename='img/carousel-2.jpg') }}" alt="">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -151,7 +151,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img src="img/icon1.png" alt="" width="60px" class="mb-4">
+                            <img src="{{ url_for('static', filename='img/icon1.png') }}" alt="" width="60px" class="mb-4">
                             <h5 class="mb-3">Learn anything</h5>
                             <p>Explore any interest or trending topic, take prerequisites, and advance your skills</p>
                         </div>
@@ -160,7 +160,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img src="img/icon2.png" alt="" width="60px" class="mb-4">
+                            <img src="{{ url_for('static', filename='img/icon2.png') }}" alt="" width="60px" class="mb-4">
                             <h5 class="mb-3">Save money</h5>
                             <p>Spend less money on your learning if you plan to take multiple courses this year</p>
                         </div>
@@ -169,7 +169,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img src="img/icon3.png" alt="" width="60px" class="mb-4">
+                            <img src="{{ url_for('static', filename='img/icon3.png') }}" alt="" width="60px" class="mb-4">
                             <h5 class="mb-3">Flexible learning</h5>
                             <p>Learn at your own pace, move between multiple courses, or switch to a different course
                             </p>
@@ -179,7 +179,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img src="img/icon4.png" alt="" width="60px" class="mb-4">
+                            <img src="{{ url_for('static', filename='img/icon4.png') }}" alt="" width="60px" class="mb-4">
                             <h5 class="mb-3">Unlimited certificates</h5>
                             <p>Earn a certificate for every learning program that you complete at no additional cost</p>
                         </div>
@@ -197,7 +197,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{ url_for('static', filename='img/about.jpg') }}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -255,7 +255,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/banner-1.jpg" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{ url_for('static', filename='img/banner-1.jpg') }}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -277,7 +277,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat1.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat1.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">Microsoft Excel</a>
@@ -287,7 +287,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat2.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat2.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center"> AWS</a>
@@ -297,7 +297,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat3.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat3.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">Python</a>
@@ -307,7 +307,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat4.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat4.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">Java</a>
@@ -317,7 +317,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat5.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat5.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">Web Design</a>
@@ -327,7 +327,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat6.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat6.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">Web Development</a>
@@ -337,7 +337,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat7.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat7.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">MySQL</a>
@@ -347,7 +347,7 @@
                 <div class="col-lg-3 col-md-6  text-center">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
 
-                        <img src="img/cat8.png" class="img-fluid" alt="categories"></i>
+                        <img src="{{ url_for('static', filename='img/cat8.png') }}" class="img-fluid" alt="categories"></i>
 
                         <h5 class="my-2">
                             <a href="#" class="text-center">UI/UX Design</a>
@@ -371,7 +371,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-1.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-1.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -401,7 +401,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-2.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-2.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">PAID</div>
 
@@ -432,7 +432,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-3.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-3.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -463,7 +463,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-4.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-4.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">PAID</div>
 
@@ -494,7 +494,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-5.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-5.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -525,7 +525,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-6.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-6.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -556,12 +556,12 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-7.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-7.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
                         </div>
-                        <div class="p-2 pb-0">
+                        <div class="p2 pb-0">
 
                             <h5 class="mb-1">AWS for Beginners
                             </h5>
@@ -587,7 +587,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-8.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-8.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">PAID</div>
 
@@ -618,7 +618,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-9.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-9.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -648,7 +648,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-10.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-10.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">PAID</div>
 
@@ -656,8 +656,8 @@
                         <div class="p-2 pb-0">
 
                             <h5 class="mb-1">Statistics For Data Science
-                            
-                                
+
+
                             </h5>
                         </div>
                         <div class="d-flex">
@@ -681,7 +681,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-11.jpg" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-11.jpg') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -712,7 +712,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="img/course-12.png" alt="">
+                            <img class="img-fluid" src="{{ url_for('static', filename='img/course-12.png') }}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -751,27 +751,27 @@
 
 
     <!-- Banner-2 Start -->
-    <section class="pb-5" style="background: url('img/banner-3.jpg');">
+    <section class="pb-5" style="background: url('{{ url_for('static', filename='img/banner-3.jpg') }}');">
         <div class="container-xxl mt-5" >
             <div class="container" >
                 <div class="row g-5 ">
-    
+
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                         <div class="position-relative h-100">
-                            <img class="img-fluid position-absolute w-100 h-100 bg-light" src="img/banner-2.png" alt=""
+                            <img class="img-fluid position-absolute w-100 h-100 bg-light" src="{{ url_for('static', filename='img/banner-2.png') }}" alt=""
                                 style="object-fit: cover;">
                         </div>
                     </div>
-    
+
                     <div class="col-lg-6 p-5 wow fadeInUp" data-wow-delay="0.3s">
-    
+
                         <h1 class="mb-4" style="color: #fb873f;">Become an Instructor</h1>
                         <p class="mb-4 text-white">Instructors from around the world teach millions of learners on Udemy. We provide
                             the tools and skills to teach what you love.</p>
-    
+
                         <a class="btn text-light py-3 mt-2" href="instructor.html">Start Teaching Today</a>
                     </div>
-    
+
                 </div>
             </div>
         </div>
@@ -782,7 +782,7 @@
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                
+
                 <h1 class="mb-5">Frequently Asked Questions</h1>
             </div>
             <div class="row g-2">
@@ -922,13 +922,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 
 </html>
