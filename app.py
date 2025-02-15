@@ -1,13 +1,15 @@
 
-from flask import Flask, request, jsonify, session
+import os
+from flask import Flask, request, jsonify, session, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Course, Enrollment
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key'  # Change this to a secure key
+app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///education.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ECHO'] = True  # For debugging
 
 db.init_app(app)
 
