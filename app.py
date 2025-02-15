@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Course, Enrollment
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///education.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/icon.png" rel="icon">
+    <link href="{{ url_for('static', filename='img/icon.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -94,7 +94,7 @@
             </div>
         </div>
         <!-- Header End -->
-    
+
 
 
     <!-- Signup Start -->
@@ -242,12 +242,12 @@
                         userType: document.getElementById('userType').value
                     })
                 });
-                
+
                 const data = await response.json();
                 if (!response.ok) {
                     throw new Error(data.error || 'Registration failed');
                 }
-                
+
                 const userType = document.getElementById('userType').value;
                 window.location.href = userType === 'student' ? 'student_profile.html' : 'instructor_profile.html';
             } catch (error) {
