@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, request, jsonify, session, redirect, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -22,26 +21,26 @@ def register():
     email = data.get('email', '').lower().strip()
     password = data.get('password', '')
     user_type = data.get('userType', '')
-    
+
     if not email or not password or not user_type:
         return jsonify({'error': 'All fields are required'}), 400
-        
+
     if len(password) < 6:
         return jsonify({'error': 'Password must be at least 6 characters'}), 400
-        
+
     if User.query.filter_by(email=email).first():
         return jsonify({'error': 'Email already exists'}), 409
-        
+
     hashed_password = generate_password_hash(password)
     new_user = User(
         email=data['email'],
         password=hashed_password,
         user_type=data['userType']
     )
-    
+
     db.session.add(new_user)
     db.session.commit()
-    
+
     return jsonify({
         'id': new_user.id,
         'email': new_user.email,
@@ -52,7 +51,7 @@ def register():
 def login():
     data = request.json
     user = User.query.filter_by(email=data['email']).first()
-    
+
     if user and check_password_hash(user.password, data['password']):
         session['user_id'] = user.id
         return jsonify({
@@ -68,20 +67,20 @@ def login():
                 'teacherId': user.teacher_id
             }
         })
-    
+
     return jsonify({'error': 'Invalid credentials'}), 401
 
 @app.route('/api/profile', methods=['PUT'])
 def update_profile():
     if 'user_id' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-        
+
     user = User.query.get(session['user_id'])
     data = request.json
-    
+
     for key, value in data.items():
         setattr(user, key, value)
-    
+
     db.session.commit()
     return jsonify({'message': 'Profile updated successfully'})
 
@@ -89,11 +88,11 @@ def update_profile():
 def dashboard(user_type, user_id):
     if 'user_id' not in session:
         return redirect('/login')
-        
+
     user = User.query.get(user_id)
     if not user:
         return redirect('/login')
-        
+
     if user_type == 'student':
         enrollments = Enrollment.query.filter_by(student_id=user_id).all()
         courses = [Course.query.get(e.course_id) for e in enrollments]
@@ -121,7 +120,7 @@ def get_courses():
 def create_course():
     if 'user_id' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-    
+
     data = request.json
     new_course = Course(
         name=data['name'],
@@ -132,10 +131,10 @@ def create_course():
         image_url=data.get('image_url', ''),
         level=data.get('level', 'Beginner')
     )
-    
+
     db.session.add(new_course)
     db.session.commit()
-    
+
     return jsonify({
         'id': new_course.id,
         'name': new_course.name,
@@ -147,7 +146,7 @@ def get_course(course_id):
     course = Course.query.get(course_id)
     if not course:
         return jsonify({'error': 'Course not found'}), 404
-        
+
     return jsonify({
         'id': course.id,
         'name': course.name,
@@ -164,16 +163,40 @@ def get_course(course_id):
 def enroll_course(course_id):
     if 'user_id' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-        
+
     enrollment = Enrollment(
         student_id=session['user_id'],
         course_id=course_id
     )
-    
+
     db.session.add(enrollment)
     db.session.commit()
-    
+
     return jsonify({'message': 'Enrolled successfully'})
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/login')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup_page():
+    return render_template('signup.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/courses')
+def courses():
+    return render_template('courses.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
