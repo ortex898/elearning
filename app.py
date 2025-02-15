@@ -91,5 +91,78 @@ def dashboard(user_type, user_id):
         courses = Course.query.filter_by(instructor_id=user_id).all()
         return render_template('instructor_dashboard.html', user=user, courses=courses)
 
+@app.route('/api/courses', methods=['GET'])
+def get_courses():
+    courses = Course.query.all()
+    return jsonify([{
+        'id': c.id,
+        'name': c.name,
+        'description': c.description,
+        'price': c.price,
+        'is_free': c.is_free,
+        'image_url': c.image_url,
+        'rating': c.rating,
+        'learners_count': c.learners_count,
+        'level': c.level
+    } for c in courses])
+
+@app.route('/api/courses', methods=['POST'])
+def create_course():
+    if 'user_id' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    data = request.json
+    new_course = Course(
+        name=data['name'],
+        description=data.get('description', ''),
+        instructor_id=session['user_id'],
+        price=data.get('price', 0.0),
+        is_free=data.get('is_free', True),
+        image_url=data.get('image_url', ''),
+        level=data.get('level', 'Beginner')
+    )
+    
+    db.session.add(new_course)
+    db.session.commit()
+    
+    return jsonify({
+        'id': new_course.id,
+        'name': new_course.name,
+        'description': new_course.description
+    })
+
+@app.route('/api/courses/<course_id>', methods=['GET'])
+def get_course(course_id):
+    course = Course.query.get(course_id)
+    if not course:
+        return jsonify({'error': 'Course not found'}), 404
+        
+    return jsonify({
+        'id': course.id,
+        'name': course.name,
+        'description': course.description,
+        'price': course.price,
+        'is_free': course.is_free,
+        'image_url': course.image_url,
+        'rating': course.rating,
+        'learners_count': course.learners_count,
+        'level': course.level
+    })
+
+@app.route('/api/enroll/<course_id>', methods=['POST'])
+def enroll_course(course_id):
+    if 'user_id' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+        
+    enrollment = Enrollment(
+        student_id=session['user_id'],
+        course_id=course_id
+    )
+    
+    db.session.add(enrollment)
+    db.session.commit()
+    
+    return jsonify({'message': 'Enrolled successfully'})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)

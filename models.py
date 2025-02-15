@@ -29,6 +29,12 @@ class Course(db.Model):
     instructor_id = db.Column(db.String(32), db.ForeignKey('users.id'))
     grade = db.Column(db.String(20))
     description = db.Column(db.Text)
+    price = db.Column(db.Float, default=0.0)
+    is_free = db.Column(db.Boolean, default=True)
+    image_url = db.Column(db.String(255))
+    rating = db.Column(db.Float, default=0.0)
+    learners_count = db.Column(db.Integer, default=0)
+    level = db.Column(db.String(20), default='Beginner')
 
 class Enrollment(db.Model):
     __tablename__ = "enrollments"
