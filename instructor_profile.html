@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Complete Your Profile</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-xxl py-2 mt-4">
+        <div class="container">
+            <div class="text-center">
+                <h2>Complete Your Instructor Profile</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <form id="instructorProfileForm" class="p-5 shadow">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="subjects" placeholder="Subjects You Teach" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="schools" placeholder="School(s)" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="teacherId" placeholder="Teacher ID" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" id="classes" placeholder="Classes You Teach (e.g., Grade 9A, Grade 10B)" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn text-light w-100 py-3" type="submit">Complete Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script>
+        // Load existing profile data if any
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.profile) {
+            document.getElementById('fullName').value = currentUser.profile.fullName || '';
+            document.getElementById('subjects').value = currentUser.profile.subjects || '';
+            document.getElementById('schools').value = currentUser.profile.schools || '';
+            document.getElementById('phone').value = currentUser.profile.phone || '';
+            document.getElementById('teacherId').value = currentUser.profile.teacherId || '';
+            document.getElementById('classes').value = currentUser.profile.classes || '';
+        }
+
+        document.getElementById('instructorProfileForm').onsubmit = function(e) {
+            e.preventDefault();
+            const profileData = {
+                fullName: document.getElementById('fullName').value,
+                subjects: document.getElementById('subjects').value,
+                schools: document.getElementById('schools').value,
+                phone: document.getElementById('phone').value,
+                teacherId: document.getElementById('teacherId').value,
+                classes: document.getElementById('classes').value
+            };
+            
+            if (updateProfile(profileData)) {
+                window.location.href = 'instructor_dashboard.html';
+            }
+        };
+    </script>
+</body>
+</html>
