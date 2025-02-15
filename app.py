@@ -178,6 +178,10 @@ def enroll_course(course_id):
 def home():
     return render_template('index.html')
 
+@app.route('/index')
+def index():
+    return render_template('index.html')
+
 @app.route('/login')
 def login_page():
     return render_template('login.html')
@@ -197,6 +201,18 @@ def courses():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/team')
+def team():
+    return render_template('team.html')
+
+@app.route('/testimonial')
+def testimonial():
+    return render_template('testimonial.html')
+
+@app.route('/single')
+def single():
+    return render_template('single.html')
 
 @app.route('/student/profile')
 def student_profile():
