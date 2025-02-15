@@ -198,5 +198,19 @@ def courses():
 def contact():
     return render_template('contact.html')
 
+@app.route('/student/profile')
+def student_profile():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('student_profile.html', user=user)
+
+@app.route('/instructor/profile')
+def instructor_profile():
+    if 'user_id' not in session:
+        return redirect('/login')
+    user = User.query.get(session['user_id'])
+    return render_template('instructor_profile.html', user=user)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
